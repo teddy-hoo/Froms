@@ -1,0 +1,33 @@
+.ignore {
+	pointer-events: none;
+}
+
+#canvas {
+	background-color: #fff;
+	border-color: #ddd;
+	border-width: 1px;
+	border-radius: 4px 4px 0 0;
+	border-style: solid;
+	height: 500px;
+    -webkit-transition-duration: 0.3s;
+}
+
+.drag-enter {
+	-webkit-transform: scale(1.02);
+    box-shadow: 5px 5px 5px rgb(180, 180, 180);
+}
+
+.invisible {
+	opacity: 0.5;
+}
+
+.tag {
+	margin-top: 10px;
+}
+
+.title {
+	margin-top: 15px;
+	margin-bottom: 15px;
+	font-size: 30px;
+	text-align: center;
+}
