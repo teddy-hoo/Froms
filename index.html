@@ -5,10 +5,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="./css/forms.css">
 
-<!--     // <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
-    // <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-sanitize.js"></script>
+    <script src="./lib/angular.js"></script>
     <script src="./js/config.js"></script>
     <script src="./js/forms.js"></script>
 </head>
@@ -27,7 +24,7 @@
                 		<input ng-model="eventTitle" type="text" class="form-control" placeholder="Input you event name">
                 	</div>
                 	<div ng-repeat="st in selectedTags track by $index">
-                		<div ng-bind-html="st"></div>
+                		<div class="tag" ng-bind-html="st"></div>
                 	</div>
                 	
                 </div>

@@ -1,4 +1,4 @@
-var formsApp = angular.module('formsApp', ['ngSanitize']);
+var formsApp = angular.module('formsApp', []);
 
 formsApp.controller('FormsCtrl', function($scope) {
     $scope.tags = TAGS;
@@ -54,11 +54,11 @@ formsApp.directive('ngDropable', function() {
                 event.preventDefault();
                 element.removeClass("drag-enter");
                 var tagName = event.dataTransfer.getData("tagName").trim();
-                // scope.$apply(function(){
-                // 	scope.selectedTags.push(scope.tags[tagName]);
-                // });
+                scope.$apply(function(){
+                	scope.selectedTags.push(scope.tags[tagName]);
+                });
 
-                element.append(scope.tags[tagName]);
+                // element.append(scope.tags[tagName]);
             });
 
         }
