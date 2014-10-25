@@ -1,10 +1,11 @@
-var formsApp = angular.module('formsApp', []);
+var formsApp = angular.module('formsApp', ['ngSanitize']);
 
 formsApp.controller('FormsCtrl', function($scope) {
     $scope.tags = TAGS;
     $scope.tagNames = Object.keys($scope.tags);
     $scope.editingTitle = false;
     $scope.eventTitle = "Click here to input a title";
+    $scope.selectedTags = [];
 
     $scope.editTitle = function(){
     	$scope.editingTitle = true;
@@ -26,7 +27,7 @@ formsApp.directive('ngDraggable', function() {
                 event.dataTransfer.setData("tagName", element.text());
             });
 
-            element.bind("dragend", function(event) {})
+            element.bind("dragend", function(event) {});
         }
     }
 });
@@ -42,6 +43,7 @@ formsApp.directive('ngDropable', function() {
 
             element.bind("dragover", function(event) {
                 event.preventDefault();
+                element.addClass("drag-enter");
             });
 
             element.bind("dragleave", function(event) {
@@ -52,6 +54,10 @@ formsApp.directive('ngDropable', function() {
                 event.preventDefault();
                 element.removeClass("drag-enter");
                 var tagName = event.dataTransfer.getData("tagName").trim();
+                // scope.$apply(function(){
+                // 	scope.selectedTags.push(scope.tags[tagName]);
+                // });
+
                 element.append(scope.tags[tagName]);
             });
 
