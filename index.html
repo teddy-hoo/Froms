@@ -11,24 +11,31 @@
     <script src="./js/forms.js"></script>
 </head>
 
-<body ng-controller="FormsCtrl">
+<body ng-controller="FormsCtrl" ng-click="exitAll($event)">
+	<div class="popout" ng-show="showOptionDiv" ng-click="skip($event)">
+		<div ng-repeat="o in curOption">
+			<label>{{ o.key }}</label>
+    		<input class="form-control" placeholder="input a value" ng-model="o.value">
+		</div>
+		<button type="button" class="btn btn-primary" ng-click="setOptions($event)">OK</button>
+	</div>
     <div class="container">
         <h2>Forms</h2>
         <div class="row">
             <div class="col-md-9 col-md-push-3">
                 <h3>View</h3>
                 <div id="canvas" ng-dropable>
-                	<div class="title" ng-show="!editingTitle" ng-click="editTitle()">
+                	<div class="title" ng-show="!editingTitle" ng-click="editTitle($event)">
                 		<h3>{{ eventTitle }}</h3>
                 	</div>
-                	<div class="title" ng-show="editingTitle" ng-keydown="finishTitle($event)">
-                		<input ng-model="eventTitle" type="text" class="form-control" placeholder="Input you event name">
+                	<div class="title" ng-show="editingTitle" ng-keydown="exitAll($event)">
+                		<input ng-model="eventTitle" auto-focus type="text" class="title-input form-control" placeholder="Input you event name" ng-click="editTitle($event)">
                 	</div>
                 	<div class="tag" ng-repeat="st in selectedTags track by $index"  ng-mouseenter="showOptions($event)" ng-mouseleave="hideOptions($event)" ng-draggable>
                 		<div ng-bind-html="st.html"></div>
                 		<div class="option-bar" ng-show="st.showOptions">
                 			<span class="move icon glyphicon glyphicon-align-justify"></span>
-                			<span class="edit icon glyphicon glyphicon-pencil"></span>
+                			<span class="edit icon glyphicon glyphicon-pencil" ng-click="customizeTag($event)"></span>
                 			<span class="delete icon glyphicon glyphicon-remove" ng-click="deleteTag($event)"></span>
 						</div>
                 	</div>
