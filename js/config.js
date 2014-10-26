@@ -1,8 +1,10 @@
 var TAGS = {
-	"Email Address": {
-						html: '<div><input type="email" class="tag form-control"' +
-					 		  ' placeholder="Enter email"></div>',
-					 	showOptions: false
+	"Input": {
+					 	showOptions: false,
+					 	options: [{
+					 				key: 'placeholder',
+					 				value: "Enter a placeholder"
+					 			  }]
 					 },
 	"Gender"       : {
 						html: '<div class="btn-group"><button type="button" ' +
@@ -12,3 +14,8 @@ var TAGS = {
 				     	showOptions: false
 				     }
 };
+
+TAGS["Input"].html = '<div><input type="email" class="tag form-control"' +
+					 ' placeholder="' + 
+					 TAGS["Input"].options[0].value +
+					 '"></div>';

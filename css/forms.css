@@ -34,6 +34,10 @@
 	text-align: center;
 }
 
+.title-input {
+	text-align: center;
+}
+
 .option-bar {
 	float: right;
 	margin-top: 8px;
@@ -62,4 +66,18 @@
 
 .delete {
 	cursor: pointer;
+}
+
+.popout {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    width: 400px;
+    height: 300px;
+    z-index: 1000;
+    background-color: white;
+    box-shadow: -2px 2px 60px rgb(200, 200, 200);
+    padding: 15px;
 }

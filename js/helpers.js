@@ -9,3 +9,12 @@ var removeFromArray = function(value, array){
 	array[index] = undefined;
 	return array;
 };
+
+var refresh = function(array, index){
+	if(array[index].name == "Input"){
+		array[index].html = '<div><input type="email" class="tag form-control"' +
+					 ' placeholder="' + 
+					 array[index].options[0].value +
+					 '"></div>'; 
+	}
+};
