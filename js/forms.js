@@ -14,6 +14,26 @@ formsApp.controller('FormsCtrl', function($scope) {
     $scope.finishTitle = function(event){
     	$scope.editingTitle = event.which == 13 ? false : true;
     };
+
+    $scope.showOptions = function(event){
+    	var e = angular.element(event.currentTarget);
+    	e.data().$scope.st.showOptions = true;
+    	e.addClass("move-left");
+    };
+
+    $scope.hideOptions = function(event){
+    	var e = angular.element(event.currentTarget);
+    	e.removeClass("move-left");
+    	e.data().$scope.st.showOptions = false;
+    };
+
+    $scope.deleteTag = function(event){
+    	var e = angular.element(event.currentTarget);
+    	var parent = angular.element(e.parent().parent());
+    	var st = parent.data().$scope.st;
+    	$scope.selectedTags = removeFromArray(st, $scope.selectedTags);
+    	parent.remove();
+    };
 });
 
 formsApp.directive('ngDraggable', function() {
@@ -54,11 +74,10 @@ formsApp.directive('ngDropable', function() {
                 event.preventDefault();
                 element.removeClass("drag-enter");
                 var tagName = event.dataTransfer.getData("tagName").trim();
+                var tag = angular.copy(scope.tags[tagName]);
                 scope.$apply(function(){
-                	scope.selectedTags.push(scope.tags[tagName]);
+                	scope.selectedTags.push(tag);
                 });
-
-                // element.append(scope.tags[tagName]);
             });
 
         }

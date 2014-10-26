@@ -7,6 +7,7 @@
 
     <script src="./lib/angular.js"></script>
     <script src="./js/config.js"></script>
+    <script src="./js/helpers.js"></script>
     <script src="./js/forms.js"></script>
 </head>
 
@@ -23,10 +24,14 @@
                 	<div class="title" ng-show="editingTitle" ng-keydown="finishTitle($event)">
                 		<input ng-model="eventTitle" type="text" class="form-control" placeholder="Input you event name">
                 	</div>
-                	<div ng-repeat="st in selectedTags track by $index">
-                		<div class="tag" ng-bind-html="st"></div>
+                	<div class="tag" ng-repeat="st in selectedTags track by $index"  ng-mouseenter="showOptions($event)" ng-mouseleave="hideOptions($event)" ng-draggable>
+                		<div ng-bind-html="st.html"></div>
+                		<div class="option-bar" ng-show="st.showOptions">
+                			<span class="move icon glyphicon glyphicon-align-justify"></span>
+                			<span class="edit icon glyphicon glyphicon-pencil"></span>
+                			<span class="delete icon glyphicon glyphicon-remove" ng-click="deleteTag($event)"></span>
+						</div>
                 	</div>
-                	
                 </div>
             </div>
             <div class="col-md-3 col-md-pull-9">
