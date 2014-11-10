@@ -1,21 +1,63 @@
 var TAGS = {
-	"Input": {
+	"Input"        : {
 					 	showOptions: false,
-					 	options: [{
-					 				key: 'placeholder',
-					 				value: "Enter a placeholder"
-					 			  }]
+					 	options: [
+					 		{
+					 			key: "name",
+					 			value: ""
+					 		},
+					 		{
+					 			key: "tooltip",
+					 			value: "Enter a tooltip"
+					 		},
+					 		{
+					 			key: "placeholder",
+					 			value: "Enter a placeholder"
+					 		}
+					 	]
+					 	// {
+					 	// 			placeholder: "Enter a placeholder",
+					 	// 			name: "input",
+					 	// 			tooltip: "Enter a tooltip"
+					 	// 		  }
 					 },
-	"Gender"       : {
-						html: '<div class="btn-group"><button type="button" ' +
-				     		  'class="btn btn-default">Male</button>' +
-				      		  '<button type="button" class="btn btn-default">' +
-				     		  'Female</button></div>',
-				     	showOptions: false
+	"Radio Button" : {
+				     	showOptions: false,
+				     	options: [
+				     		{
+				     			key: "name",
+				     			value: ""
+				     		},
+				     		{
+				     			key: "tooltip",
+				     			value: ""
+				     		},
+				     		{
+				     			key: "buttons",
+				     			value: "First,Second"
+				     		}
+				     	]
+				     	// {
+				     	// 	name: "radio-button",
+				     	// 	tooltip: "Enter a tooltip",
+				     	// 	buttons: "First,Second"
+				     	// }
 				     }
 };
 
 TAGS["Input"].html = '<div><input type="email" class="tag form-control"' +
-					 ' placeholder="' + 
-					 TAGS["Input"].options[0].value +
+					 'name="' + TAGS['Input'].options[0].value +
+					 '" placeholder="' +  TAGS["Input"].options[2].value +
 					 '"></div>';
+
+var buttons = "";
+TAGS["Radio Button"].options[2].value.split(',').forEach(
+	function(b){
+		b = b.trim();
+		buttons += '<button type="button" class="btn btn-default">' +
+				   b + '</button>';
+	}
+);
+
+TAGS["Radio Button"].html = '<div name="' + TAGS["Radio Button"].options[0].value +
+							'" class="btn-group">' + buttons + '</div>';
